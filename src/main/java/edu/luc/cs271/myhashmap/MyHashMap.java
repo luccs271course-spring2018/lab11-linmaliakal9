@@ -178,8 +178,11 @@ public class MyHashMap<K, V> implements Map<K, V> {
       return true;
     } else if (!(that instanceof Map)) {
       return false;
-    } else {
-      // TODO simply compare the entry sets
+    } else if (containsKey(that) || containsValue(that)) {
+      // DONE simply compare the entry sets
+      return true;
+    }
+    else {
       return false;
     }
   }
