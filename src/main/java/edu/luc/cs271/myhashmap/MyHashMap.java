@@ -125,16 +125,18 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
   @Override
   public void putAll(final Map<? extends K, ? extends V> m) {
-    // TODO add each entry in m's entrySet
-
-
+    // DONE add each entry in m's entrySet
+    for (Map.Entry<? extends K, ? extends V> entry : m.entrySet()) {
+      this.put(entry.getKey(), entry.getValue());
+    }
   }
 
   @Override
   public void clear() {
-    // TODO clear each chain
-
-
+    // DONE clear each chain
+    for (int n = 0; n < DEFAULT_TABLE_SIZE; n++) {
+      table.set(n, new LinkedList<>());
+    }
   }
 
   /** The resulting keySet is not "backed" by the Map, so we keep it unmodifiable. */
@@ -184,7 +186,14 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
   @Override
   public String toString() {
-    // TODO return the string representation of the underlying table
+    // DONE return the string representation of the underlying table
+    for (int n = 0; n < DEFAULT_TABLE_SIZE; n++) {
+      final Iterator<Entry<K, V>> iter = table.get(n).iterator();
+      while (iter.hasNext()) {
+        Entry<K, V> tempV = iter.next();
+        System.out.println(tempV.getKey() + " " + tempV.getValue());
+      }
+    }
     return "";
   }
 
