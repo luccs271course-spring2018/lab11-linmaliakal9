@@ -32,8 +32,9 @@ public class MyHashMap<K, V> implements Map<K, V> {
   public int size() {
     // DONE add the sizes of all the chains
     int result = (table.size() % DEFAULT_TABLE_SIZE);
-
-
+    for (int n = 0; n < DEFAULT_TABLE_SIZE; n++) {
+      result += table.get(n).size();
+    }
     return result;
   }
 
