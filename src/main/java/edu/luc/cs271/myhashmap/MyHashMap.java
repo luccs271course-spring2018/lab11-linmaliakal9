@@ -30,8 +30,8 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
   @Override
   public int size() {
-    // TODO add the sizes of all the chains
-    int result = 0;
+    // DONE add the sizes of all the chains
+    int result = (table.size() % DEFAULT_TABLE_SIZE);
 
 
     return result;
@@ -44,35 +44,66 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
   @Override
   public boolean containsKey(final Object key) {
-    // TODO follow basic approach of remove below (though this will be much simpler)
+    // DONE follow basic approach of remove below (though this will be much simpler)
     final int index = calculateIndex(key);
-
-
+    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
+    while (iter.hasNext()) {
+      final Entry<K, V> entry = iter.next();
+      if (entry.getKey().equals(key)) {
+        return true;
+      }
+    }
     return false;
   }
 
   @Override
   public boolean containsValue(final Object value) {
-    // TODO follow basic approach of remove below (though this will be much simpler)
-
-
+    // DONE follow basic approach of remove below (though this will be much simpler)
+    final int index = calculateIndex(value);
+    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
+    while (iter.hasNext()) {
+      final Entry<K, V> entry = iter.next();
+      if (entry.getKey().equals(value)) {
+        return true;
+      }
+    }
     return false;
   }
 
   @Override
   public V get(final Object key) {
-    // TODO follow basic approach of remove below (though this will be simpler)
+    // DONE follow basic approach of remove below (though this will be simpler)
     final int index = calculateIndex(key);
-
-
+    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
+    while (iter.hasNext()) {
+      final Entry<K, V> entry = iter.next();
+      if (entry.getKey().equals(key)) {
+        final V oldValue = entry.getValue();
+        return oldValue;
+      }
+    }
     return null;
   }
 
   @Override
   public V put(final K key, final V value) {
-    // TODO follow basic approach of remove below (this will be similar)
+    // DONE follow basic approach of remove below (this will be similar)
     final int index = calculateIndex(key);
-
+    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
+    while (iter.hasNext()) {
+      final Entry<K, V> entry = iter.next();
+      if (entry.getKey().equals(key)) {
+        if (entry.getValue() != null) {
+          entry.setValue(value);
+          final V oldValue = entry.getValue();
+          return oldValue;
+        }
+        else {
+          entry.setValue(value);
+          return null;
+        }
+      }
+    }
 
     return null;
   }
