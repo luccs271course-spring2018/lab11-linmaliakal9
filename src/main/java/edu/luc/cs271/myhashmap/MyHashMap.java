@@ -199,12 +199,9 @@ public class MyHashMap<K, V> implements Map<K, V> {
       return true;
     } else if (!(that instanceof Map)) {
       return false;
-    } else if (containsKey(that) || containsValue(that)) {
+    } else {
       // DONE simply compare the entry sets
-      return true;
-    }
-    else {
-      return false;
+      return ((Map)that).entrySet().equals(this.entrySet());
     }
   }
 
