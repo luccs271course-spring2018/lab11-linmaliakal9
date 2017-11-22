@@ -207,7 +207,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
   private int calculateIndex(final Object key) {
     // positive remainder (as opposed to %)
-    // required in case hashCode is negative!
+    // required in case hashCode is negative! (questions)
     return Math.floorMod(key.hashCode(), table.size());
   }
 }
