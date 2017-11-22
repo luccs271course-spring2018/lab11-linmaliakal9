@@ -96,7 +96,6 @@ public class MyHashMap<K, V> implements Map<K, V> {
     while (iter.hasNext()) {
       final Entry<K, V> entry = iter.next();
       if (entry.getKey().equals(key)) {
-        entry.setValue(value);
         final V oldValue = entry.getValue();
         entry.setValue(value);
         return oldValue;
