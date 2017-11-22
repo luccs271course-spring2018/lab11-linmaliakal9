@@ -98,6 +98,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
       if (entry.getKey().equals(key)) {
         entry.setValue(value);
         final V oldValue = entry.getValue();
+        entry.setValue(value);
         return oldValue;
       }
     }
