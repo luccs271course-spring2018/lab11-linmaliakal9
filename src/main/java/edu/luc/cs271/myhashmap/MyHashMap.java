@@ -60,7 +60,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
   @Override
   public boolean containsValue(final Object value) {
     // DONE follow basic approach of remove below (though this will be much simpler)
-    //final int index = calculateIndex(value);
+    // final int index = calculateIndex(value);
     for (int n = 0; n < DEFAULT_TABLE_SIZE; n++) {
       final Iterator<Entry<K, V>> iter = table.get(n).iterator();
       while (iter.hasNext()) {
@@ -101,7 +101,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
         return oldValue;
       }
     }
-    table.get(index).add(0, new AbstractMap.SimpleEntry<K, V>(key,value));
+    table.get(index).add(0, new AbstractMap.SimpleEntry<K, V>(key, value));
     return null;
   }
 
@@ -201,7 +201,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
       return false;
     } else {
       // DONE simply compare the entry sets
-      return ((Map)that).entrySet().equals(this.entrySet());
+      return ((Map) that).entrySet().equals(this.entrySet());
     }
   }
 
